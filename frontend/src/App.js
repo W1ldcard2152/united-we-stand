@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './styles/GlobalStyles';
@@ -16,8 +16,8 @@ import CalendarSection from './components/calendar/CalendarSection';
 // Pages
 import HomePage from './pages/HomePage';
 
-// Utilities
-import { useApi } from './hooks';
+// Mock Data
+import { mockContent } from './mockData';
 
 const AppWrapper = styled.div`
   min-height: 100vh;
@@ -87,39 +87,8 @@ const ErrorScreen = styled.div`
 `;
 
 function App() {
-  const { data: content, loading, error, refetch } = useApi('/content/home');
-
-  if (loading) {
-    return (
-      <LoadingScreen>
-        <div className="spinner"></div>
-      </LoadingScreen>
-    );
-  }
-
-  if (error) {
-    return (
-      <ErrorScreen>
-        <h2>Something went wrong</h2>
-        <p>We're having trouble loading the content. Please try again.</p>
-        <button onClick={refetch}>
-          Try Again
-        </button>
-      </ErrorScreen>
-    );
-  }
-
-  if (!content) {
-    return (
-      <ErrorScreen>
-        <h2>No content available</h2>
-        <p>We couldn't find any content to display.</p>
-        <button onClick={refetch}>
-          Refresh
-        </button>
-      </ErrorScreen>
-    );
-  }
+  // Use mock data instead of API call
+  const content = mockContent.home;
 
   return (
     <Router>

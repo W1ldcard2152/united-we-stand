@@ -20,8 +20,7 @@ import {
 } from 'react-icons/fa';
 import { colors, typography, spacing, breakpoints, shadows, borderRadius } from '../../constants/theme';
 import { Container, Button, Card } from '../../styles/GlobalStyles';
-import { useApi } from '../../hooks';
-import { apiCall } from '../../utils/helpers';
+import { mockEvents } from '../../mockData';
 import { MobileCalendar, EventListView, MobileEventModal } from './mobile';
 
 // Import required CSS for react-big-calendar
@@ -535,81 +534,21 @@ function ResponsiveCalendarSection() {
     .reduce((sum, event) => sum + (event.maxAttendees || 0), 0);
   const peopleHelped = 147; // This could come from your API
 
-  // Fetch events from API
+  // Load mock events data
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        setLoading(true);
-        const response = await apiCall('/events');
-        // Convert date strings to Date objects for react-big-calendar
-        const formattedEvents = response.map(event => ({
-          ...event,
-          start: new Date(event.start),
-          end: new Date(event.end)
-        }));
-        setEvents(formattedEvents);
-      } catch (err) {
-        setError('Failed to load events. Please try again later.');
-        console.error('Error fetching events:', err);
-        
-        // Fallback demo data for development
-        const demoEvents = [
-          {
-            id: 1,
-            title: 'Community Town Hall',
-            start: new Date(2025, 5, 15, 18, 0),
-            end: new Date(2025, 5, 15, 20, 0),
-            category: 'community-meeting',
-            description: 'Monthly community meeting to discuss ongoing initiatives and upcoming programs.',
-            location: '2 Broad St, Lyons, NY',
-            maxAttendees: 50,
-            currentAttendees: 23,
-            contact: 'info@unitedwestandcac.org'
-          },
-          {
-            id: 2,
-            title: 'Food Distribution',
-            start: new Date(2025, 5, 20, 10, 0),
-            end: new Date(2025, 5, 20, 14, 0),
-            category: 'resource-distribution',
-            description: 'Weekly food distribution for families in need. Please bring ID and proof of residence.',
-            location: '2 Broad St, Lyons, NY',
-            maxAttendees: 100,
-            currentAttendees: 67,
-            contact: 'volunteers@unitedwestandcac.org'
-          },
-          {
-            id: 3,
-            title: 'Job Skills Workshop',
-            start: new Date(2025, 5, 25, 14, 0),
-            end: new Date(2025, 5, 25, 16, 30),
-            category: 'workshop',
-            description: 'Learn valuable job search skills including resume writing and interview techniques.',
-            location: '2 Broad St, Lyons, NY',
-            maxAttendees: 25,
-            currentAttendees: 18,
-            contact: 'education@unitedwestandcac.org'
-          },
-          {
-            id: 4,
-            title: 'Community Garden Volunteers',
-            start: new Date(2025, 6, 2, 9, 0),
-            end: new Date(2025, 6, 2, 12, 0),
-            category: 'volunteer-opportunity',
-            description: 'Help maintain our community garden! All skill levels welcome.',
-            location: 'Community Garden, Behind 2 Broad St',
-            maxAttendees: 15,
-            currentAttendees: 8,
-            contact: 'volunteers@unitedwestandcac.org'
-          }
-        ];
-        setEvents(demoEvents);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
+    // Simulate loading time for better UX
+    setLoading(true);
+    
+    setTimeout(() => {
+      // Convert date strings to Date objects for react-big-calendar
+      const formattedEvents = mockEvents.map(event => ({
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end)
+      }));
+      setEvents(formattedEvents);
+      setLoading(false);
+    }, 500); // Short delay to show loading state
   }, []);
 
   const filteredEvents = events.filter(event => 
