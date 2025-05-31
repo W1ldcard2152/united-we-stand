@@ -1,0 +1,55 @@
+{
+  "home": {
+    "header": {
+      "title": "United We Stand CAC, Inc.",
+      "navigation": [
+        {"name": "Home", "path": "/"},
+        {"name": "Learn About UWS", "path": "/learn-about-uws"},
+        {"name": "Blogs", "path": "/blogs"},
+        {"name": "How We Support", "path": "/how-we-support"},
+        {"name": "Partnerships", "path": "/partnerships"},
+        {"name": "Community Resources", "path": "/community-resources"},
+        {"name": "Provider/Professional Resources", "path": "/provider-professional-resources"}
+      ],
+      "social_media": [
+        {"platform": "Facebook", "icon": "facebook", "url": "#"},
+        {"platform": "Instagram", "icon": "instagram", "url": "#"},
+        {"platform": "Email", "icon": "envelope", "url": "#"},
+        {"platform": "Wayne County Bulletin", "icon": "bulletin-board", "url": "/wayne-county-bulletin-board", "type": "button"}
+      ],
+      "donate_button": {"text": "Donate", "url": "#"}
+    },
+    "main_content": [
+      {
+        "type": "image",
+        "alt": "United We Stand Assistance Center Logo",
+        "src": "/images/uws-logo.png"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "United We Stand CAC - Weekly Schedule"
+      },
+      {
+        "type": "image",
+        "alt": "Weekly Schedule",
+        "src": "/images/weekly-schedule.png"
+      },
+      {
+        "type": "text",
+        "content": "Stay in-the-know by following us on Facebook and Instagram! @UWSCAC"
+      }
+    ],
+    "footer": {
+      "title": "United We Stand Community Assistance Center",
+      "tagline": "Empowering through resources, uniting through community — fostering strengths and growth for all.",
+      "contact_info": {
+        "website": "www.UnitedWeStandCAC.org",
+        "phone": "315-502-0007",
+        "email": "mmiller.UnitedWeStand@gmail.com",
+        "address": "2 Broad St., Lyons"
+      },
+      "office_hours": "Office Hours: [To be extracted]"
+    }
+  }
+}
